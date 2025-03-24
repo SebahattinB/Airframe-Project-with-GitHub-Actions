@@ -15,20 +15,11 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-        with:
-         fetch-depth: 0
       - name: Compare Models to Ancestors
         uses: matlab-actions/run-command@v1
-        with:
-          command: lastpush="${{ github.event.before }}", diffGitHub_push(lastpush)
       - name: Upload Comparison Reports
         uses: actions/upload-artifact@v3
-        with:
-           name: diffreports
-           path: ${{ github.workspace }}\*.html
       - name: Run All Project Tests
         uses: matlab-actions/run-command@v1
-        with:
-          command: runtests
 
 #   Copyright 2022 The MathWorks, Inc.
